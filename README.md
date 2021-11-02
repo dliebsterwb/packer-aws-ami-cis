@@ -1,3 +1,7 @@
+CIS AWS AMI Packer pipeline using ebs surrogate as the builder. 
+Presently we are back to one file system till objections evaporate, mostly CIS Server L2 compliant as of the writing date.
+
+
 # packer
 
 Packer for creating identical machine images for multiple platforms from a single JSON configuration.
