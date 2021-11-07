@@ -1,0 +1,7 @@
+- name: 'Harden Server'
+  hosts: default
+  become: true
+  become_user: root
+
+  roles:
+    - Ubuntu2004-CIS

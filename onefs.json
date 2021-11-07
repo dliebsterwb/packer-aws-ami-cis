@@ -1,0 +1,48 @@
+{
+"variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "region": "",
+    "vpc_id": "",
+    "subnet_id": "",
+    "source_ami": "",
+    "ssh_username": "ubuntu"
+},
+  "builders": [{
+  "type": "amazon-ebs",
+  "access_key": "{{user `aws_access_key`}}",
+  "secret_key": "{{user `aws_secret_key`}}",
+  "region": "us-gov-west-1",
+  "source_ami_filter": {
+    "filters": {
+    "virtualization-type": "hvm",
+    "name": "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20201014",
+    "root-device-type": "ebs"
+    },
+    "owners": ["513442679011"],
+    "most_recent": true
+    },
+  "instance_type": "t3a.large",
+  "sriov_support": "true",
+  "iam_instance_profile": "ohio-ssm-role",
+  "ena_support": "true",
+  "ami_virtualization_type": "hvm",
+  "ami_description": "Ubuntu 20.04 OneFS-CIS Server Level 2",
+  "ssh_username": "{{user `ssh_username`}}",
+  "ami_name": "ilt-cis-ubuntu_OneFS_2020{{timestamp}}"
+
+  }
+  ],
+  "provisioners": [
+      {
+      "type": "ansible",
+      "playbook_file": "./ubuntu-cis-playbook.yaml"
+      }
+    ]
+  }
+
+   
+
+     
+     
+   

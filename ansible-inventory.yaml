@@ -1,0 +1,7 @@
+[servers]
+127.0.0.1
+
+[servers:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_become=true
+ansible_user=root 
